@@ -30,7 +30,9 @@ You can then run the `norand` binary from `./target/release/norand`. `norand`
 has two primary modes of operation:
 
 - `norand run`: start a new process with a custom source of randomness.
-- `norand attach`: attach `norand` to an existing PID.
+- `norand attach`: attach `norand` to an existing PID. Note that you may need to
+  either change the value of the `kernel.yama.ptrace_scope` kernel parameter or
+  run `norand` with elevated privileges in order to run this subcommand.
 
 For instance, in the following snippet, I read "random" bytes from
 `/dev/urandom` under norand with `head -c 16 /dev/urandom`:
